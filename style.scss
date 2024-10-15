@@ -1,0 +1,209 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,700&display=swap");
+
+$font-weights: (
+  "regular": 400,
+  "bold": 700,
+);
+
+$font-size: 0.875 em;
+
+$gradient-color: linear-gradient(90deg, hsl(6, 100%, 80%) 46%, hsl(335, 100%, 65%) 86%);
+
+$neutral1: hsl(243, 100%, 93%); /* Pale Blue:  */
+$neutral2: hsl(229, 7%, 55%); /* Grayish Blue */
+$neutral3: hsl(228, 56%, 26%); /* Dark Blue  */
+$neutral4: hsl(229, 57%, 11%); /* Very Dark Blue  */
+
+$desktop-bg: url(../../images/bg-desktop.png);
+$mobile-bg: url(../../images/bg-mobile.png);
+
+$storage-sides: icons, gb;
+
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $desktop-bg, $neutral4;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+
+
+  max-width: 70%;
+}
+
+
+
+@each $side in $storage-sides {
+ .#{$side}-container {
+    height: 14rem;
+    background-color: $neutral3;
+    border-top-right-radius: 100px;
+ }
+}
+.icons-container {
+  .logo {
+    img {
+      margin-left: 2rem;
+      margin-top: 1.5rem;
+    }
+  }
+  .icons {
+    ul {
+      background: transparent;
+      li {
+        background: $neutral4;
+        margin-left: 1rem;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+.gb-container {
+    margin-top: 0rem;
+    z-index: 1;
+    height: 10rem;
+    .progress{
+        background-color: $neutral4;
+        .progress-bar{
+            background: $gradient-color;
+            z-index: 0;
+           border-top-right-radius: 13px;
+           border-bottom-right-radius: 13px;
+        
+        &::after{
+            content: '';
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: $neutral1;
+            top:50%;
+          transform: translateY(-50%);
+            right:0;
+           
+        }
+        }
+    }
+  .min-storage,
+  .max-storage {
+    color: $neutral1;
+    font-weight: map-get($map: $font-weights, $key: "bold");
+  }
+  .storage-notification{
+    color: $neutral2;
+    font-weight: map-get($map: $font-weights, $key: "regular");
+    span{
+        color: $neutral1;
+        font-weight: map-get($map: $font-weights, $key: "bold");;
+    }
+  }
+ 
+}
+.toast{
+    width: 11rem;
+    height: 4rem;
+    right: 3rem;
+    top:2rem;
+    color: $neutral4;
+    background-color: #fff;
+    font-weight: map-get($map: $font-weights, $key: "bold");
+    font-size: 2.5em;
+     z-index: 3;
+    span{
+        color: $neutral2;
+        font-size: 0.3em;
+    };
+    &::before{
+        content: '';
+        position: absolute;
+        clip-path: polygon(100% 0, 20% 0, 100% 100%);
+        width: 2rem;
+        height: 2rem;
+        background-color: #fff;
+        top: 3rem;
+        right: 0;
+
+    };
+    
+
+}
+
+//*** Media queries
+@media screen  and (width <= 1280px){
+    .toast{
+        right: 2.4rem;
+        
+    }
+}
+@media screen and (width <= 1024px) {
+    .container{
+        max-width: 88%;
+    }
+    .gb-container{
+        margin-top: 0rem;
+    }
+    .toast{
+       right: 2.3rem;
+       top:2rem;
+    }
+}
+@media screen and (width <= 992px) {
+}
+
+@media screen and (width <= 768px) {
+  body {
+    background: $mobile-bg;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .container {
+    max-width: 88%;
+  }
+  .gb-container{
+    border-radius: 10px;
+    margin-top: auto;
+  }
+  .toast{
+    top: 12rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .toast::before{
+    background-color: transparent;
+  }
+}
+@media screen and (width <= 600px) {
+  .container {
+    max-width: 92%;
+    margin-top: -2rem;
+  }
+  .gb-container{
+    margin-top: -3rem;
+  }
+  .toast{
+    top: 9rem;
+   
+  }
+}
