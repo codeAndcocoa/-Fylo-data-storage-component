@@ -31,8 +31,6 @@ Users should be able to:
 
 - Ipad :![Ipad](./images/ipad-scrn-version.jpeg)
 
-
-
 - Mobile :![Mobile](./images/mobile-scrn-version.jpeg);
 
 ### Links
